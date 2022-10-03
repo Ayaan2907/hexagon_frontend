@@ -1,20 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
-import * as csv from 'csvtojson';
+import {HandleInputFile} from './utils/HandleInputFile';
 
 function App() {
-  const [filePath, setFilePath] = useState('');
-
-  const handleFileUpload = (event) => { 
-    // csv()
-    //   .fromFile(filePath)
-    //   .then((jsonObj) => {
-    //     console.log(jsonObj);
-    //   }
-    // );
-    console.log("File path: " + filePath);
-  }
+  const [inputFile, setInputFile] = useState(null);
+  const handleFileUpload = async () => {
+    const file = await HandleInputFile(inputFile) 
+  };
 
   return (
     <div className="App">
@@ -23,7 +15,7 @@ function App() {
           type="file"
           accept='.csv'
           placeholder='Enter file path'
-          onChange={(event) => setFilePath(event.target.value)}
+          onChange={(event) => setInputFile(event.target.files[0])}
         />
         <button onClick={handleFileUpload}>Upload</button>
       </header>
