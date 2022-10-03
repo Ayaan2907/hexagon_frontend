@@ -1,11 +1,11 @@
-import Papa from "papaparse";
+import * as parser from "papaparse";
 
 export const HandleInputFile = async (file) => {
 
     var fileData = {}; //holds the file data
     const ConvertCsvToJson = (file) => {
         return new Promise((resolve, reject) => {
-            Papa.parse(file, {
+            parser.parse(file, {
                 header: true,
                 complete: (results) => {
                     resolve(results);
