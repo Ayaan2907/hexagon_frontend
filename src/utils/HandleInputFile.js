@@ -21,7 +21,11 @@ export const HandleInputFile = async (file) => {
         .then((data) => {
             // arranging the data into required format
             fileData = {
-                properties: file,
+                properties: {
+                    fileName: file.name,
+                    fileExtension: file.type,
+                    fileSize: file.size,  
+                },
                 data: data,
             };
             console.log(fileData);
@@ -37,13 +41,9 @@ export const HandleInputFile = async (file) => {
 
 fileData = {
     properties: {
-        lastModified: 1620000000000,
-        lastModifiedDate: "Wed May 12 2021 00:00:00 GMT+0530 (India Standard Time)",
-        name: "File name as a string",
-        path: "C:\Users\username\Downloads\file.csv",
-        size: 1234,
-        type: "text/csv",
-        webkitRelativePath: "",
+        fileName: "test.csv",
+        fileExtension: "text/csv",
+        fileSize: 1234,
     },
     data: {
         data: [
